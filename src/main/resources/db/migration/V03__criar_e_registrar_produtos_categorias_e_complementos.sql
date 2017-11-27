@@ -120,4 +120,33 @@ INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 4);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 5);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 6);
 
+INSERT INTO permissao (id, nome) values (7, 'ROLE_CADASTRAR_COMPLEMENTOS');
+INSERT INTO permissao (id, nome) values (8, 'ROLE_PESQUISAR_COMPLEMENTOS');
+INSERT INTO permissao (id, nome) values (9, 'ROLE_REMOVER_COMPLEMENTOS');
+
+-- admin
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 7);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 8);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 9);
+
+INSERT INTO permissao (id, nome) values (10, 'ROLE_CADASTRAR_CATEGORIAS');
+INSERT INTO permissao (id, nome) values (11, 'ROLE_PESQUISAR_CATEGORIAS');
+INSERT INTO permissao (id, nome) values (12, 'ROLE_REMOVER_CATEGORIAS');
+
+-- admin
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 10);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 11);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 12);
+
+INSERT INTO permissao (id, nome) values (13, 'ROLE_CADASTRAR_TIPO_COMPLEMENTOS');
+INSERT INTO permissao (id, nome) values (14, 'ROLE_PESQUISAR_TIPO_COMPLEMENTOS');
+INSERT INTO permissao (id, nome) values (15, 'ROLE_REMOVER_TIPO_COMPLEMENTOS');
+
+-- admin
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 13);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 14);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 15);
+
+
+
 
