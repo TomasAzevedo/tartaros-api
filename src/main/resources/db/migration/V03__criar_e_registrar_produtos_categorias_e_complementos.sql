@@ -111,3 +111,13 @@ INSERT INTO `tartaros`.`produto_complemento` (`id_produto`, `id_complemento`) VA
 INSERT INTO `tartaros`.`produto_complemento` (`id_produto`, `id_complemento`) VALUES ('3', '5');
 
 
+INSERT INTO permissao (id, nome) values (4, 'ROLE_CADASTRAR_PRODUTOS');
+INSERT INTO permissao (id, nome) values (5, 'ROLE_PESQUISAR_PRODUTOS');
+INSERT INTO permissao (id, nome) values (6, 'ROLE_REMOVER_PRODUTOS');
+
+-- admin
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 4);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 5);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1, 6);
+
+
