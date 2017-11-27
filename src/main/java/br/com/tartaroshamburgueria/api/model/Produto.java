@@ -47,7 +47,7 @@ public class Produto {
 	@JoinColumn(name = "id_categoria")
 	private Categoria categoria;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "produto_complemento", joinColumns = @JoinColumn(name = "id_produto"), inverseJoinColumns = @JoinColumn(name = "id_complemento"))
 	private List<Complemento> listaComplementos;
 
