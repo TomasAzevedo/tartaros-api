@@ -16,6 +16,8 @@ public class TartarosApiProperty {
 	private final Seguranca seguranca = new Seguranca();
 
 	private String origemPermitida = "http://localhost:4200";
+	//private String origemPermitida = "http://tartaros-ui.s3-website-sa-east-1.amazonaws.com";
+	
 
 	public Seguranca getSeguranca() {
 		return seguranca;
