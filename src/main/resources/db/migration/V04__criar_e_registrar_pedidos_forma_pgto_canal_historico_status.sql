@@ -42,12 +42,12 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `tartaros`.`pedido` (
   `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `data` DATETIME NOT NULL COMMENT '',
-  `valor_itens` DECIMAL NULL COMMENT '',
-  `valor_taxa_entrega` DECIMAL NULL COMMENT '',
-  `valor_total` DECIMAL NULL COMMENT '',
+  `valor_itens` DECIMAL(15,2) NULL COMMENT '',
+  `valor_taxa_entrega` DECIMAL(15,2) NULL COMMENT '',
+  `valor_total` DECIMAL(15,2) NULL COMMENT '',
   `status` VARCHAR(45) NULL COMMENT '',
-  `valor_pago` DECIMAL NULL COMMENT '',
-  `valor_troco` DECIMAL NULL COMMENT '',
+  `valor_pago` DECIMAL(15,2) NULL COMMENT '',
+  `valor_troco` DECIMAL(15,2) NULL COMMENT '',
   `observacao` VARCHAR(300) NULL COMMENT '',
   `id_forma_pagamento` INT NULL COMMENT '',
   `id_promocao` INT NULL COMMENT '',
@@ -89,7 +89,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tartaros`.`item` (
   `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `valor` DECIMAL NOT NULL COMMENT '',
+  `valor` DECIMAL(15,2) NOT NULL COMMENT '',
   `observacao` VARCHAR(300) NULL COMMENT '',
   `id_produto` INT NOT NULL COMMENT '',
   `id_pedido` INT NOT NULL COMMENT '',
@@ -115,7 +115,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tartaros`.`sub_item` (
   `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `valor` DECIMAL NOT NULL COMMENT '',
+  `valor` DECIMAL(15,2) NOT NULL COMMENT '',
   `id_complemento` INT NULL COMMENT '',
   `id_item` INT NOT NULL COMMENT '',
   PRIMARY KEY (`id`)  COMMENT '',
@@ -147,20 +147,20 @@ ENGINE = InnoDB;
 -- Table `tartaros`.`historico_pedido`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tartaros`.`historico_pedido` (
-  `id` INT NOT NULL COMMENT '',
-  `dataHora` DATETIME NOT NULL COMMENT '',
-  `idStatus` INT NOT NULL COMMENT '',
-  `idPedido` INT NOT NULL COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `data_hora` DATETIME NOT NULL COMMENT '',
+  `id_status` INT NOT NULL COMMENT '',
+  `id_pedido` INT NOT NULL COMMENT '',
   PRIMARY KEY (`id`)  COMMENT '',
-  INDEX `status_idx` (`idStatus` ASC)  COMMENT '',
-  INDEX `pedido_historico_idx` (`idPedido` ASC)  COMMENT '',
+  INDEX `status_idx` (`id_status` ASC)  COMMENT '',
+  INDEX `pedido_historico_idx` (`id_pedido` ASC)  COMMENT '',
   CONSTRAINT `status`
-    FOREIGN KEY (`idStatus`)
+    FOREIGN KEY (`id_status`)
     REFERENCES `tartaros`.`status` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `pedido_historico`
-    FOREIGN KEY (`idPedido`)
+    FOREIGN KEY (`id_pedido`)
     REFERENCES `tartaros`.`pedido` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

@@ -3,10 +3,12 @@
  */
 package br.com.tartaroshamburgueria.api.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -39,13 +41,12 @@ public class Cliente {
 
 	private String cpf;
 
-	@OneToMany(
-		mappedBy = "cliente", 
-        cascade = CascadeType.ALL, 
-        orphanRemoval = true
-    )
+	@Column(name="data_nascimento")
+	private LocalDateTime dataNascimento;
+
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Endereco> enderecos;
-	
+
 	public Cliente() {
 		this.enderecos = new ArrayList<>();
 	}
@@ -92,6 +93,17 @@ public class Cliente {
 
 	public List<Endereco> getEnderecos() {
 		return enderecos;
+	}
+
+	public LocalDateTime getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDateTime dataNascimento) {
+		this.dataNascimento = dataNascimento;
+		if(null != this.dataNascimento) {
+			this.dataNascimento = this.dataNascimento.withHour(12);
+		}
 	}
 
 	public void setEnderecos(List<Endereco> enderecos) {
