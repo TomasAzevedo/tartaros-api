@@ -3,6 +3,8 @@
  */
 package br.com.tartaroshamburgueria.api.cliente.facade;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -25,10 +27,16 @@ public class ClienteServiceFacadeImpl implements ClienteServiceFacade {
 	private ClienteRepository clienteRepository;
 
 	@Override
-	public Page<Cliente> listar(ClienteFilter clienteFilter, Pageable pageable) {
+	public Page<Cliente> pesquisar(ClienteFilter clienteFilter, Pageable pageable) {
 
 		return clienteRepository.filtrar(clienteFilter, pageable);
 
+	}
+	
+	public List<Cliente> listar() {
+		
+		return clienteRepository.findAll();
+		
 	}
 
 	@Override

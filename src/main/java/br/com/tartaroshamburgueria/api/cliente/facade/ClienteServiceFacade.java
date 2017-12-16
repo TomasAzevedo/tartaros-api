@@ -3,6 +3,8 @@
  */
 package br.com.tartaroshamburgueria.api.cliente.facade;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -19,7 +21,9 @@ import br.com.tartaroshamburgueria.api.model.Cliente;
 public interface ClienteServiceFacade {
 	
 	
-	public Page<Cliente> listar(ClienteFilter clienteFilter, Pageable pageable);
+	public Page<Cliente> pesquisar(ClienteFilter clienteFilter, Pageable pageable);
+	
+	public List<Cliente> listar();
 	
 	public Cliente salvar(Cliente cliente);
 	

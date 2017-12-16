@@ -3,6 +3,8 @@
  */
 package br.com.tartaroshamburgueria.api.cliente.resource;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -43,11 +45,19 @@ public class ClienteResource {
 	private ApplicationEventPublisher publisher;
 	
 	
+	@GetMapping("/pesquisar")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CLIENTES') and #oauth2.hasScope('read')")
+	public Page<Cliente> pesquisar(ClienteFilter clienteFilter, Pageable pageable) {
+		
+		return clienteServiceFacade.pesquisar(clienteFilter, pageable);
+		
+	}
+	
 	@GetMapping
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CLIENTES') and #oauth2.hasScope('read')")
-	public Page<Cliente> listar(ClienteFilter clienteFilter, Pageable pageable) {
+	public List<Cliente> listar() {
 		
-		return clienteServiceFacade.listar(clienteFilter, pageable);
+		return clienteServiceFacade.listar();
 		
 	}
 	
